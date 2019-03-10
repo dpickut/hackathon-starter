@@ -183,6 +183,11 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+// RMS
+// Serve static files from the React app
+app.use("/home", express.static(path.join(__dirname, "client/build")));
+
 app.use(
   "/",
   express.static(path.join(__dirname, "public"), { maxAge: 31557600000 })
@@ -218,6 +223,13 @@ app.use(
     { maxAge: 31557600000 }
   )
 );
+
+// RMS
+// The "catchall" handler: for any request doesn't
+// match one above, send back React's index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/public/index.html"));
+});
 
 /**
  * Primary app routes.
