@@ -1,3 +1,16 @@
+/*
+ * User.js in /models
+ *
+ * @version   $id$ V1.0
+ * @package     Hackathon Starter fork with Groups, email verification i18n, & encrypted user data
+ * @subpackage  app
+ * @author      Sealogix Corp Developer
+ * @copyright Copyright (C) 2019 Sealogix Corp. All rights reserved.
+ * This Software is for Sealogix internal use only and
+ * is not intended for sale, free sharing or any other re-distribution.
+ * Viloaters will be prosecuted!!
+ *
+ */
 const bcrypt = require("bcrypt-nodejs");
 const crypto = require("crypto");
 const mongoose = require("mongoose");
@@ -8,20 +21,16 @@ const moment = require("moment");
 const userSchema = new mongoose.Schema(
   {
     // RMS
-    textname: { type: String, index: true }, // to be used to find  key users
+    textname: { type: String, index: true }, // to be used to find  key users as text tag
     username: { type: String, unique: true, index: true }, // hashed
     encryptedUserName: { type: String }, // encrypted 2 way
     email: { type: String, unique: true, index: true }, // hashed
     encryptedEmail: { type: String }, // encrypted 2 way
     role: { type: String, default: "free" }, // free, club, admin, super
     isVerified: { type: Boolean, default: false }, // verification of email
-    inactive: { type: Boolean, default: false, index: true }, // if true user deleted or inactive account for batch removal after x days
-
-    // email: { type: String, unique: true },
     password: String,
     passwordResetToken: String,
     passwordResetExpires: Date,
-
     snapchat: String,
     facebook: String,
     twitter: String,

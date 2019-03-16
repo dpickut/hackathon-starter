@@ -5,18 +5,17 @@
  * @package     Hackathon Starter fork with Groups, email verification i18n, & encrypted user data
  * @subpackage  app
  * @author      Sealogix Corp Developer
- * @copyright Copyright (C) 019 Sealogix Corp. All rights reserved.
+ * @copyright Copyright (C) 2019 Sealogix Corp. All rights reserved.
  * This Software is for Sealogix internal use only and
  * is not intended for sale, free sharing or any other re-distribution.
  * Viloaters will be prosecuted!!
  *
  */
-var bcrypt = require("bcrypt-nodejs");
-var crypto = require("crypto");
-var config = require("../config/config");
-var mongoose = require("mongoose");
-var Schema = mongoose.Schema;
-var moment = require("moment");
+const bcrypt = require("bcrypt-nodejs");
+const crypto = require("crypto");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const moment = require("moment");
 
 moment().format("YYYY MM DD");
 

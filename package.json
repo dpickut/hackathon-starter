@@ -66,6 +66,7 @@
     "popper.js": "^1.14.7",
     "pug": "^2.0.3",
     "request": "^2.88.0",
+    "simple-encryptor": "^2.0.0",
     "stripe": "^6.25.1",
     "tumblr.js": "^2.0.0",
     "twilio": "^3.28.1",

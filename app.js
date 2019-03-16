@@ -28,7 +28,7 @@ const upload = multer({ dest: path.join(__dirname, "uploads") });
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: ".env.example" });
+dotenv.load({ path: ".env.sealogix" });
 
 // RMS
 /**
@@ -227,9 +227,9 @@ app.use(
 // RMS
 // The "catchall" handler: for any request doesn't
 // match one above, send back React's index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "/client/public/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "/client/public/index.html"));
+// });
 
 /**
  * Primary app routes.
@@ -247,6 +247,12 @@ app.post("/signup", userController.postSignup);
 app.get("/contact", contactController.getContact);
 app.post("/contact", contactController.postContact);
 app.get("/account", passportConfig.isAuthenticated, userController.getAccount);
+app.post('/confirmation/:authtoken',
+  userController.postConfirmation
+);
+app.post('/resend',
+  userController.resendTokenPost
+);
 app.post(
   "/account/profile",
   passportConfig.isAuthenticated,
